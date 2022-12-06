@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/WorkerWithExeption.iml" filepath="$PROJECT_DIR$/WorkerWithExeption.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WorkerWithException.iml" filepath="$PROJECT_DIR$/WorkerWithException.iml" />
     </modules>
   </component>
 </project>
