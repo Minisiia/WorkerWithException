@@ -15,11 +15,6 @@ public class Main {
         String myPosition;
         String myYear;
 
- /*       arrayWorkers[0] = new Worker("Петренко А.М.", "Директор","1999");
-        arrayWorkers[1] = new Worker("Франко В.М.", "Бухгалтер","2000");
-        arrayWorkers[2] = new Worker("Плющ А.М.", "Кухар", "2002");
-        arrayWorkers[3] = new Worker("Сидоренко А.М.", "Офіціант", "2013");
-        arrayWorkers[4] = new Worker("Вітренко А.О.", "Прибиральник", "2012");*/
         for (int i = 0; i < arrayWorkers.length; i++) {
             System.out.println("Введіть фамілію та ініціали " + (i + 1) + " працівника:");
             mySurnameAndInitials = scanner.nextLine();
