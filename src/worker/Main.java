@@ -13,53 +13,51 @@ public class Main {
         Worker[] arrayWorkers = new Worker[3];
         String mySurnameAndInitials;
         String myPosition;
-        String myYear;
-
+        int myYear;
+        // визначення сьогоднішнього року
+        Calendar cal = Calendar.getInstance();
+        int yearNow = cal.get(Calendar.YEAR);
         for (int i = 0; i < arrayWorkers.length; i++) {
             System.out.println("Введіть фамілію та ініціали " + (i + 1) + " працівника:");
             mySurnameAndInitials = scanner.nextLine();
             System.out.println("Введіть назву займаної посади " + (i + 1) + " працівника:");
             myPosition = scanner.nextLine();
             System.out.println("Введіть рік початку роботи " + (i + 1) + " працівника:");
-            myYear = scanner.nextLine();
+            myYear = scanner.nextInt();
             try {
-                int year = Integer.parseInt(myYear);
-                if (myYear.length()!=4)
-                throw new WrongFormatYearException();
-            } catch (NumberFormatException e) {
-                System.err.println("Невірний формат року. Містить не тільки цифри");
+                if (myYear>9999 || myYear<1000) {
+                    throw new WrongFormatYearException("Невірний формат року. Правильний формат YYYY");
+                }
+                if (myYear > yearNow) {
+                    throw new Exception("Рік не може бути більшим за сьогоднішній");
+                }
             }
             catch (WrongFormatYearException ex) {
-                System.err.println("Невірний формат року. Правильний формат YYYY");
+                System.err.println(ex.getMessage());
+                myYear = 0;
             }
+            catch (Exception e) {
+                System.err.println(e.getMessage());
+                myYear = 0;
+            }
+            scanner.nextLine();
             arrayWorkers[i] = new Worker(mySurnameAndInitials,myPosition,myYear);
         }
         // сортування масиву за фаміліями
-/*        Arrays.sort(arrayWorkers, Comparator.comparing(Worker::getSurnameAndInitials));
+        System.out.println("Сортування масиву по фамілії:");
+        Arrays.sort(arrayWorkers, Comparator.comparing(Worker::getSurnameAndInitials));
         for (int i = 0; i < arrayWorkers.length; i++) {
             System.out.println(arrayWorkers[i]);
-        }*/
+        }
         System.out.println("Введіть значення стажу:");
         int experience = scanner.nextInt();
-        // визначення сьогоднішнього року
-        Calendar cal = Calendar.getInstance();
-        int yearNow = cal.get(Calendar.YEAR);
         System.out.println("Працівники, стаж роботи яких більший за " + experience + ":");
         for (int i = 0; i < arrayWorkers.length; i++) {
-            String year = arrayWorkers[i].getYearStartWork();
-            try {
-                int yearInt = Integer.parseInt(year);
-                if (year.length()!=4)
-                    throw new WrongFormatYearException();
-                if ((yearNow - yearInt) > experience)
-                    System.out.println(arrayWorkers[i].getSurnameAndInitials());
-            }catch (Exception e){
+            int year = arrayWorkers[i].getYearStartWork();
+            if (year == 0)
                 System.err.println("Невірний формат року " + (i + 1) + " працівника. Неможливо порахувати стаж");
-            }
-
-
+            if (((yearNow - year) > experience) && year != 0)
+                System.out.println(arrayWorkers[i].getSurnameAndInitials());
         }
-
-
     }
 }

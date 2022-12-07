@@ -1,14 +1,14 @@
 package worker;
 
-public class Worker {
+public class Worker implements Comparable{
     private String surnameAndInitials;
     private String position;
-    private String yearStartWork;
+    private int yearStartWork;
 
     public Worker() {
     }
 
-    public Worker(String surnameAndInitials, String position, String yearStartWork) {
+    public Worker(String surnameAndInitials, String position, int yearStartWork) {
         this.surnameAndInitials = surnameAndInitials;
         this.position = position;
         this.yearStartWork = yearStartWork;
@@ -22,7 +22,21 @@ public class Worker {
         return position;
     }
 
-    public String getYearStartWork() {
+    public int getYearStartWork() {
         return yearStartWork;
+    }
+
+    @Override
+    public String toString() {
+        return "Worker{" +
+                "surnameAndInitials='" + surnameAndInitials + '\'' +
+                ", position='" + position + '\'' +
+                ", yearStartWork=" + yearStartWork +
+                '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }
