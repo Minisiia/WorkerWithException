@@ -4,7 +4,6 @@ package worker;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Comparator;
-
 import java.util.Scanner;
 
 public class Main {
@@ -29,15 +28,11 @@ public class Main {
                     throw new WrongFormatYearException("Невірний формат року. Правильний формат YYYY");
                 }
                 if (myYear > yearNow) {
-                    throw new Exception("Рік не може бути більшим за сьогоднішній");
+                    throw new YearOverCurrentException("Рік не може бути більшим за сьогоднішній");
                 }
             }
-            catch (WrongFormatYearException ex) {
+            catch (WrongFormatYearException | YearOverCurrentException ex) {
                 System.err.println(ex.getMessage());
-                myYear = 0;
-            }
-            catch (Exception e) {
-                System.err.println(e.getMessage());
                 myYear = 0;
             }
             scanner.nextLine();
@@ -46,8 +41,8 @@ public class Main {
         // сортування масиву за фаміліями
         System.out.println("Сортування масиву по фамілії:");
         Arrays.sort(arrayWorkers, Comparator.comparing(Worker::getSurnameAndInitials));
-        for (int i = 0; i < arrayWorkers.length; i++) {
-            System.out.println(arrayWorkers[i]);
+        for (Worker arrayWorker : arrayWorkers) {
+            System.out.println(arrayWorker);
         }
         System.out.println("Введіть значення стажу:");
         int experience = scanner.nextInt();

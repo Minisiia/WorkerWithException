@@ -28,11 +28,9 @@ public class Worker implements Comparable{
 
     @Override
     public String toString() {
-        return "Worker{" +
-                "surnameAndInitials='" + surnameAndInitials + '\'' +
-                ", position='" + position + '\'' +
-                ", yearStartWork=" + yearStartWork +
-                '}';
+        return  "surnameAndInitials=" + surnameAndInitials +
+                ", position=" + position +
+                ", yearStartWork=" + yearStartWork;
     }
 
     @Override
