@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Worker[] arrayWorkers = new Worker[3];
+        Worker[] arrayWorkers = new Worker[5];
         String mySurnameAndInitials;
         String myPosition;
         int myYear;
