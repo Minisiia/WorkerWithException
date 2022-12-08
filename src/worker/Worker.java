@@ -1,6 +1,6 @@
 package worker;
 
-public class Worker implements Comparable{
+public class Worker{
     private String surnameAndInitials;
     private String position;
     private int yearStartWork;
@@ -33,8 +33,4 @@ public class Worker implements Comparable{
                 ", yearStartWork=" + yearStartWork;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
-    }
 }
