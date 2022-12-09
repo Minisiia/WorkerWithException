@@ -24,7 +24,6 @@ public class Main {
             System.out.println("Введіть рік початку роботи " + (i + 1) + " працівника:");
             myYear = scanner.nextInt();
             try {
-                
                 if (myYear>9999 || myYear<1000) {
                     throw new WrongFormatYearException("Невірний формат року. Правильний формат YYYY");
                 }
@@ -41,10 +40,11 @@ public class Main {
         }
         // сортування масиву за фаміліями
         System.out.println("Сортування масиву по фамілії:");
-        Arrays.sort(arrayWorkers, Comparator.comparing(Worker::getSurnameAndInitials));
+        Arrays.sort(arrayWorkers);
         for (Worker arrayWorker : arrayWorkers) {
             System.out.println(arrayWorker);
         }
+        // блок стажу
         System.out.println("Введіть значення стажу:");
         int experience = scanner.nextInt();
         System.out.println("Працівники, стаж роботи яких більший за " + experience + ":");
