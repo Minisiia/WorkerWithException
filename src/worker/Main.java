@@ -24,6 +24,7 @@ public class Main {
             System.out.println("Введіть рік початку роботи " + (i + 1) + " працівника:");
             myYear = scanner.nextInt();
             try {
+                
                 if (myYear>9999 || myYear<1000) {
                     throw new WrongFormatYearException("Невірний формат року. Правильний формат YYYY");
                 }
